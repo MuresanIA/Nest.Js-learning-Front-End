@@ -42,12 +42,16 @@ export class ItemsComponent implements OnInit {
   redirectToUpdateItemComponent(item: ItemModel) {
     const newItem = new ItemModel(
       item._id,
-      item.qty,
       item.name,
-      item.description
+      item.description,
+      item.qty
     );
     console.log(newItem);
     this.itemsService.sendItemModel(newItem);
     this.router.navigate(['update-item']);
+  }
+
+  redirectToCreateItemComponent() {
+    this.router.navigate(['create-item']);
   }
 }

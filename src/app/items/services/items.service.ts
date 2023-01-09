@@ -24,6 +24,10 @@ export class ItemsService {
     );
   }
 
+  createItem(item: ItemModel): Observable<ItemModel> {
+    return this.httpClient.post<ItemModel>('http://localhost:3000/items', item);
+  }
+
   updateItem(item: ItemModel, itemId: string): Observable<ItemModel> {
     return this.httpClient.put<ItemModel>(
       'http://localhost:3000/items/' + itemId,

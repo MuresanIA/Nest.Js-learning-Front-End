@@ -31,9 +31,9 @@ export class UpdateItemComponent implements OnInit {
         tap((result) => {
           this.itemModel = new ItemModel(
             result._id,
-            result.qty,
             result.name,
-            result.description
+            result.description,
+            result.qty
           );
           this.setPreviousValues();
         }),
@@ -53,9 +53,9 @@ export class UpdateItemComponent implements OnInit {
   onSubmit() {
     const builtItemModel: ItemModel = new ItemModel(
       this.itemModel?._id,
-      this.updateItemForm.controls['itemQty'].value,
       this.updateItemForm.controls['itemName'].value,
-      this.updateItemForm.controls['itemDescription'].value
+      this.updateItemForm.controls['itemDescription'].value,
+      this.updateItemForm.controls['itemQty'].value
     );
     this.itemService
       .updateItem(builtItemModel, builtItemModel._id || '')
