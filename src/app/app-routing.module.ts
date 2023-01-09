@@ -7,7 +7,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 const routes: Routes = [
   { path: '', component: ItemsComponent },
   { path: 'update-item', component: UpdateItemComponent },
-  { path: '**', pathMatch:"full", component: PageNotFoundComponent },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 

@@ -1,1 +1,12 @@
-<p>update-item works!</p>
+<div>
+  <form [formGroup]="updateItemForm" (ngSubmit)="onSubmit()">
+    <label for="itemName">Item Name</label>
+    <input maxlength="20" type="text" formControlName="itemName" />
+    <label for="itemDescription">Item Description</label>
+    <input maxlength="20" type="text" formControlName="itemDescription" />
+    <label for="itemQty">Item Quantity</label>
+    <input maxLength="5" type="text" formControlName="itemQty" />
+    <button type="submit" [disabled]="!updateItemForm.valid">Save</button>
+    <button>Cancel</button>
+  </form>
+</div>
