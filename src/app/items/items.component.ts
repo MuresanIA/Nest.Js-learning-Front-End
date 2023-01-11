@@ -34,6 +34,7 @@ export class ItemsComponent implements OnInit {
   }
 
   deleteItem(itemId: string) {
+    window.alert("Are you sure about this ?")
     this.itemsService.deleteItem(itemId).subscribe((result) => {
       console.log(result);
     });
