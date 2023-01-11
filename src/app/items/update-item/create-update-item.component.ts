@@ -70,20 +70,24 @@ export class CreateUpdateItemComponent implements OnInit {
         .subscribe();
       console.log(builtItemModel);
       this.router.navigateByUrl('/');
-    } else {
+    } else if (!this.itemModel._id) {
       this.itemService
         .createItem(
           (this.itemModel = new ItemModel(
             this.itemModel._id!,
             this.itemForm.controls['itemName'].value!,
             this.itemForm.controls['itemDescription'].value!,
-            +this.itemForm.controls['itemQty'].value!
+            Number(this.itemForm.controls['itemQty'].value!)
           ))
         )
         .subscribe((itemModel) => (this.itemModel = itemModel));
       console.log(this.itemModel);
       this.router.navigateByUrl('/');
     }
+  }
+
+  redirectToItems() {
+    this.router.navigateByUrl('')
   }
 
   onSubmit() {
