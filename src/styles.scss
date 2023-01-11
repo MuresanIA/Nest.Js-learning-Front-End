@@ -1,4 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 button {
-    cursor: pointer;
+  cursor: pointer;
+  width: 100px;
+  margin: auto;
+  padding: 20px;
+  margin-top: 10px;
+  &.create-button {
+    margin-top: 17px;
+  }
 }
