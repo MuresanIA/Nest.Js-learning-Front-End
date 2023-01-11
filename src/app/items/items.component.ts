@@ -48,10 +48,10 @@ export class ItemsComponent implements OnInit {
     );
     console.log(newItem);
     this.itemsService.sendItemModel(newItem);
-    this.router.navigate(['update-item']);
+    this.router.navigate(['create-update-item']);
   }
 
   redirectToCreateItemComponent() {
-    this.router.navigate(['create-item']);
+    this.router.navigate(['create-update-item']);
   }
 }
