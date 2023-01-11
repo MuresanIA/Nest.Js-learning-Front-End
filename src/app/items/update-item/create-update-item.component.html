@@ -7,6 +7,12 @@
     <label for="itemQty">Item Quantity</label>
     <input maxLength="5" type="text" formControlName="itemQty" />
     <button type="submit" [disabled]="!itemForm.valid">Save</button>
-    <button type="button" (click)="redirectToItems()">Cancel</button>
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      (click)="redirectToItems()"
+    >
+      Cancel
+    </button>
   </form>
 </div>
