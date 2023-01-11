@@ -50,7 +50,7 @@ export class CreateUpdateItemComponent implements OnInit {
     this.itemForm.controls['itemQty'].setValue(this.itemModel?.qty);
   }
 
-  onSubmit() {
+  createOrUpdateItem() {
     if (this.itemModel?._id) {
       const builtItemModel: ItemModel = new ItemModel(
         this.itemModel?._id,
@@ -83,5 +83,9 @@ export class CreateUpdateItemComponent implements OnInit {
       console.log(this.itemModel);
       this.router.navigateByUrl('/');
     }
+  }
+
+  onSubmit() {
+    this.createOrUpdateItem();
   }
 }
