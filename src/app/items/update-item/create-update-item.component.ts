@@ -11,7 +11,7 @@ import { ItemsService } from '../services/items.service';
   styleUrls: ['./create-update-item.component.scss'],
 })
 export class CreateUpdateItemComponent implements OnInit {
-  itemModel: ItemModel | undefined;
+  itemModel!: ItemModel;
   itemForm = new FormGroup({
     itemName: new FormControl('', Validators.required),
     itemDescription: new FormControl('', Validators.required),
@@ -43,26 +43,27 @@ export class CreateUpdateItemComponent implements OnInit {
   }
 
   setPreviousValues() {
-    this.itemForm.controls['itemName'].setValue(this.itemModel?.name);
+    this.itemForm.controls['itemName'].setValue(this.itemModel.name!);
     this.itemForm.controls['itemDescription'].setValue(
-      this.itemModel?.description
+      this.itemModel?.description!
     );
-    this.itemForm.controls['itemQty'].setValue(this.itemModel?.qty);
+
+    this.itemForm.controls['itemQty'].setValue(String(this.itemModel.qty));
   }
 
   createOrUpdateItem() {
     if (this.itemModel?._id) {
       const builtItemModel: ItemModel = new ItemModel(
         this.itemModel?._id,
-        this.itemForm.controls['itemName'].value,
-        this.itemForm.controls['itemDescription'].value,
-        this.itemForm.controls['itemQty'].value
+        this.itemForm.controls['itemName'].value!,
+        this.itemForm.controls['itemDescription'].value!,
+        Number(this.itemForm.controls['itemQty'].value!)
       );
       this.itemService
-        .updateItem(builtItemModel, builtItemModel._id || '')
+        .updateItem(builtItemModel, builtItemModel._id!)
         .pipe(
           tap((result) => {
-            builtItemModel._id = result._id || '';
+            builtItemModel._id = result._id!;
           }),
           take(1)
         )
@@ -73,10 +74,10 @@ export class CreateUpdateItemComponent implements OnInit {
       this.itemService
         .createItem(
           (this.itemModel = new ItemModel(
-            undefined,
-            this.itemForm.controls['itemName'].value,
-            this.itemForm.controls['itemDescription'].value,
-            +this.itemForm.controls['itemQty'].value
+            this.itemModel._id!,
+            this.itemForm.controls['itemName'].value!,
+            this.itemForm.controls['itemDescription'].value!,
+            +this.itemForm.controls['itemQty'].value!
           ))
         )
         .subscribe((itemModel) => (this.itemModel = itemModel));
