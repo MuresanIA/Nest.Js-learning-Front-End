@@ -6,10 +6,10 @@
     <input maxlength="20" type="text" formControlName="itemDescription" />
     <label for="itemQty">Item Quantity</label>
     <input maxLength="5" type="text" formControlName="itemQty" />
-    <button type="submit" [disabled]="!itemForm.valid">Save</button>
+    <button class="btn btn-outline-success" type="submit" [disabled]="!itemForm.valid">Save</button>
     <button
       type="button"
-      class="btn btn-outline-primary"
+      class="btn btn-outline-danger"
       (click)="redirectToItems()"
     >
       Cancel
