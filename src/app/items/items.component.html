@@ -12,8 +12,8 @@
         <td>{{ item.qty }}</td>
         <td>{{ item.description }}</td>
         <td>{{ item._id }}</td>
-        <button (click)="redirectToUpdateItemComponent(item)">Update</button>
-        <button (click)="deleteItem(item._id || '')">Delete</button>
+        <button class='utility-button update-button' (click)="redirectToUpdateItemComponent(item)">Update</button>
+        <button class='utility-button delete-button' (click)="deleteItem(item._id || '')">Delete</button>
       </tr>
     </tbody>
   </table>

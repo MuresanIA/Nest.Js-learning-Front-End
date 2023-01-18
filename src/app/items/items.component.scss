@@ -2,3 +2,19 @@
    margin-left: 38.5%;
    margin-top: 2%;
 }
+
+.utility-button {
+   margin-left: 15px;
+   border-radius: 5px;
+   margin-top: 3px;
+   margin-bottom: 3px;
+   color: #fafafa;
+   width: 75px;
+   border-color: #f1e7b6;
+   &.update-button {
+      background-color: #42b883;
+   }
+   &.delete-button {
+      background-color: #c81912;
+   }
+}
