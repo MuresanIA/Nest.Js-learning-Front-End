@@ -1,14 +1,28 @@
 <div class='item-details-container'>
     <div *ngIf="itemModel">
-        <div>{{itemModel.name}}</div>
-        <div>{{itemModel.description}}</div>
-        <div *ngFor="let color of itemModel.color">
-            <div> {{color.name}}</div>
-            <div> {{color.type}}</div>
-        </div>
-        <div *ngFor="let previousOwner of itemModel.previousOwner">
-            <div>{{previousOwner.name}}</div>
-            <div>{{previousOwner.address}}</div>
+            <div>
+                Name:
+            </div>
+            <div> {{itemModel.name}}</div>
+            <div>
+                Description:
+            </div>
+            <div> {{itemModel.description}}</div>
+            <div *ngIf="itemModel?.color">
+                <div>
+                    Color name & type:
+                </div>
+                <div *ngFor="let color of itemModel.color"> {{color.name}} - {{color.type}}</div>
+            </div>
+            <div *ngIf="itemModel.previousOwner">
+                <div>
+                    Previous owner(s) name & address:
+                </div>
+                <div *ngFor="let previousOwner of itemModel.previousOwner"> {{previousOwner.name}} -
+                    {{previousOwner.address}}</div>
+            </div>
+        <div>
+            <button class='go-back-button' (click)="redirectToItems()">Go back</button>
         </div>
     </div>
 </div>

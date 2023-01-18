@@ -1,5 +1,16 @@
 .item-details-container {
     display: flex;
     flex-direction: column;
+    text-align: center;
+    font-size: larger;
+    font-family: sans-serif;
+}
+
+.go-back-button {
+    width: 117px;
+    height: 47px;
+    border-radius: 5px;
+    background-color: #d6e4f0;
     margin: auto;
+    margin-top: 20px;
 }

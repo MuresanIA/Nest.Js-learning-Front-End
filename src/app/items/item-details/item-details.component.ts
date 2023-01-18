@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { catchError, take, tap } from 'rxjs';
 import { ItemModel } from '../models/itemModel';
 import { ItemsService } from '../services/items.service';
@@ -10,7 +11,7 @@ import { ItemsService } from '../services/items.service';
 })
 export class ItemDetailsComponent implements OnInit {
   itemModel!: ItemModel;
-  constructor(private itemsService: ItemsService) {}
+  constructor(private itemsService: ItemsService, private router: Router) {}
   ngOnInit(): void {
     this.getItemDetails();
   }
@@ -22,7 +23,6 @@ export class ItemDetailsComponent implements OnInit {
         tap((result) => {
           if (result) {
             this.itemModel = result;
-            console.log('item details ------> ', this.itemModel);
           }
         }),
         take(1),
@@ -32,5 +32,9 @@ export class ItemDetailsComponent implements OnInit {
         })
       )
       .subscribe();
+  }
+
+  redirectToItems() {
+    this.router.navigateByUrl('');
   }
 }

@@ -77,7 +77,6 @@ export class CreateUpdateItemComponent implements OnInit {
           })
         )
         .subscribe();
-      console.log(builtItemModel);
       this.router.navigateByUrl('/');
     } else if (!this.itemModel._id) {
       this.itemService
@@ -90,7 +89,6 @@ export class CreateUpdateItemComponent implements OnInit {
           ))
         )
         .subscribe((itemModel) => (this.itemModel = itemModel));
-      console.log(this.itemModel);
       this.router.navigateByUrl('/');
     }
   }

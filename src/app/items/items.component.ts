@@ -25,7 +25,6 @@ export class ItemsComponent implements OnInit {
         tap((result) => {
           if (result) {
             this.itemModel = result;
-            console.log(this.itemModel);
           }
         }),
         takeLast(1),
@@ -38,9 +37,7 @@ export class ItemsComponent implements OnInit {
   }
 
   deleteItem(itemId: string) {
-    this.itemsService.deleteItem(itemId).subscribe((result) => {
-      console.log(result);
-    });
+    this.itemsService.deleteItem(itemId).subscribe();
   }
 
   redirectToUpdateItemComponent(item: ItemModel) {
