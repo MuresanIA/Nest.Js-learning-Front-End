@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { take, tap } from 'rxjs';
+import { catchError, take, tap } from 'rxjs';
 import { ItemModel } from '../models/itemModel';
 import { ItemsService } from '../services/items.service';
 
@@ -37,7 +37,11 @@ export class CreateUpdateItemComponent implements OnInit {
           );
           this.setPreviousValues();
         }),
-        take(1)
+        take(1),
+        catchError((err) => {
+          console.log(err);
+          return err;
+        })
       )
       .subscribe();
   }
@@ -49,7 +53,7 @@ export class CreateUpdateItemComponent implements OnInit {
         this.itemModel?.description!
       );
       this.itemForm.controls['itemQty'].setValue(String(this.itemModel.qty));
-    } 
+    }
   }
 
   createOrUpdateItem() {
@@ -66,7 +70,11 @@ export class CreateUpdateItemComponent implements OnInit {
           tap((result) => {
             builtItemModel._id = result._id!;
           }),
-          take(1)
+          take(1),
+          catchError((err) => {
+            console.log(err);
+            return err;
+          })
         )
         .subscribe();
       console.log(builtItemModel);
@@ -88,7 +96,7 @@ export class CreateUpdateItemComponent implements OnInit {
   }
 
   redirectToItems() {
-    this.router.navigateByUrl('')
+    this.router.navigateByUrl('');
   }
 
   onSubmit() {

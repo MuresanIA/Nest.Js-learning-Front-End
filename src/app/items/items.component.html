@@ -1,29 +1,17 @@
-<div>
-  <table class="table">
-    <thead>
-      <th scope="col">Name</th>
-      <th scope="col">Qty</th>
-      <th scope="col">Description</th>
-      <th scope="col">MongoDB ID</th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of itemModel">
-        <td>{{ item.name }}</td>
-        <td>{{ item.qty }}</td>
-        <td>{{ item.description }}</td>
-        <td>{{ item._id }}</td>
-        <button class='utility-button update-button' (click)="redirectToUpdateItemComponent(item)">Update</button>
-        <button class='utility-button delete-button' (click)="deleteItem(item._id || '')">Delete</button>
-      </tr>
-    </tbody>
-  </table>
-  <div class="create-item-positioning">
-    <button
-      type="button"
-      class="btn btn-dark"
-      (click)="redirectToCreateItemComponent()"
-    >
-      Create Item
-    </button>
+<div class='item-container'>
+  <div class='item-container__list-of-items'>
+    <h2>Items</h2>
   </div>
+  <div class='item-container__item-name' *ngFor="let item of itemModel">
+    <div (click)="openItemDetailsComponent(item)" class='item-container__item-name__item-border'>
+    {{item.name}}
+  </div>
+    <div class='item-container__item-name__item-buttons'>
+      <button class='utility-button update-button' (click)="redirectToUpdateItemComponent(item)">Update</button>
+      <button class='utility-button delete-button' (click)="deleteItem(item._id || '')">Delete</button>
+    </div>
+  </div>
+  <button type="button" class="btn btn-dark" (click)="redirectToCreateItemComponent()">
+    Create Item
+  </button>
 </div>

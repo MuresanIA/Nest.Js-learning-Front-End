@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { takeLast, tap } from 'rxjs';
+import { catchError, takeLast, tap } from 'rxjs';
 import { ItemModel } from './models/itemModel';
 import { ItemsService } from './services/items.service';
 
@@ -28,7 +28,11 @@ export class ItemsComponent implements OnInit {
             console.log(this.itemModel);
           }
         }),
-        takeLast(1)
+        takeLast(1),
+        catchError((err) => {
+          console.log(err);
+          return err;
+        })
       )
       .subscribe();
   }
@@ -55,5 +59,18 @@ export class ItemsComponent implements OnInit {
     const emptyItem = new ItemModel();
     this.itemsService.sendItemModel(emptyItem);
     this.router.navigate(['create-update-item']);
+  }
+
+  openItemDetailsComponent(item: ItemModel) {
+    const itemDetails = new ItemModel(
+      '',
+      item.name,
+      item.description,
+      item.qty,
+      item.color,
+      item.previousOwner
+    );
+    this.itemsService.sendItemModel(itemDetails);
+    this.router.navigate(['item-details']);
   }
 }

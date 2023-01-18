@@ -1,0 +1,14 @@
+<div class='item-details-container'>
+    <div *ngIf="itemModel">
+        <div>{{itemModel.name}}</div>
+        <div>{{itemModel.description}}</div>
+        <div *ngFor="let color of itemModel.color">
+            <div> {{color.name}}</div>
+            <div> {{color.type}}</div>
+        </div>
+        <div *ngFor="let previousOwner of itemModel.previousOwner">
+            <div>{{previousOwner.name}}</div>
+            <div>{{previousOwner.address}}</div>
+        </div>
+    </div>
+</div>

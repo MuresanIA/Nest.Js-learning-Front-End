@@ -6,11 +6,12 @@ import { CreateUpdateItemComponent } from '../update-item/create-update-item.com
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ItemDetailsComponent } from '../item-details/item-details.component';
 
 @NgModule({
-  declarations: [ItemsComponent, CreateUpdateItemComponent],
+  declarations: [ItemsComponent, CreateUpdateItemComponent, ItemDetailsComponent],
   imports: [CommonModule, NgbCollapseModule, NgbModule, ReactiveFormsModule],
   providers: [ItemsService],
-  exports: [ItemsComponent, CreateUpdateItemComponent, CommonModule],
+  exports: [ItemsComponent, CreateUpdateItemComponent, CommonModule, ItemDetailsComponent],
 })
 export class ItemsModule {}
