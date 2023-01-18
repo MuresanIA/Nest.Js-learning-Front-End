@@ -52,6 +52,8 @@ export class ItemsComponent implements OnInit {
   }
 
   redirectToCreateItemComponent() {
+    const emptyItem = new ItemModel();
+    this.itemsService.sendItemModel(emptyItem);
     this.router.navigate(['create-update-item']);
   }
 }

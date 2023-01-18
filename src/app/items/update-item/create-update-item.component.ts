@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { take, tap } from 'rxjs';
@@ -43,16 +43,17 @@ export class CreateUpdateItemComponent implements OnInit {
   }
 
   setPreviousValues() {
-    this.itemForm.controls['itemName'].setValue(this.itemModel.name!);
-    this.itemForm.controls['itemDescription'].setValue(
-      this.itemModel?.description!
-    );
-
-    this.itemForm.controls['itemQty'].setValue(String(this.itemModel.qty));
+    if (this.itemModel._id) {
+      this.itemForm.controls['itemName'].setValue(this.itemModel.name!);
+      this.itemForm.controls['itemDescription'].setValue(
+        this.itemModel?.description!
+      );
+      this.itemForm.controls['itemQty'].setValue(String(this.itemModel.qty));
+    } 
   }
 
   createOrUpdateItem() {
-    if (this.itemModel?._id) {
+    if (this.itemModel._id) {
       const builtItemModel: ItemModel = new ItemModel(
         this.itemModel?._id,
         this.itemForm.controls['itemName'].value!,

@@ -13,13 +13,8 @@ import { ConfirmationModalComponent } from './confirmation-modal/confirmation-mo
     PageNotFoundComponent,
     ConfirmationModalComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ItemsModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, ItemsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
