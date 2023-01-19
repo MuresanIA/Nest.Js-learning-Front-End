@@ -13,7 +13,7 @@ import { ConfirmationModalComponent } from './confirmation-modal/confirmation-mo
     PageNotFoundComponent,
     ConfirmationModalComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, ItemsModule],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule,  ItemsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
